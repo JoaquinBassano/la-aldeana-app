@@ -11,7 +11,9 @@
   "scripts": {
     "build": "",
     "start": "",
-    "dev": "concurrently  \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\""
+    "dev": "concurrently  \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "lint": "eslint ./backend ./frontend",
+    "lint-fix": "eslint --fix ./backend ./frontend"
   },
   "keywords": [],
   "author": "",
