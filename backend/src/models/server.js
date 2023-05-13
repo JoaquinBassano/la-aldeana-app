@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 
+const { dbConnection } = require('../../config/mongo')
+
 class Server {
   constructor () {
     this.app = express()
@@ -9,8 +11,13 @@ class Server {
     // TODO: generar importación automática de paths
     this.employeesPath = '/api/employees'
 
+    this.connectDB()
     this.middlewares()
     this.routes()
+  }
+
+  async connectDB () {
+    await dbConnection()
   }
 
   middlewares () {
@@ -20,7 +27,7 @@ class Server {
   }
 
   routes () {
-    this.app.use(this.employeesPath, require('../../routes/employees'))
+    this.app.use(this.employeesPath, require('../routes/employees'))
   }
 
   listen () {
