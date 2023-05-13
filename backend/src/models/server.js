@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 
+const logger = require('../logger')
+
 const { dbConnection } = require('../../config/mongo')
 
 class Server {
@@ -32,7 +34,7 @@ class Server {
 
   listen () {
     this.app.listen(this.port, () => {
-      console.log('Server is running on PORT', this.port)
+      logger.success('Server is running on PORT', this.port)
     })
   }
 }
