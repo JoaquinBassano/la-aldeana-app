@@ -53,17 +53,26 @@ export default function EmployeesPage () {
 
   return (
     <>
-      <h1>Hola, soy Joaquin y ahora muestro una lista de empleados</h1>
+      <h2 className='pb-4 mt-4 text-2xl font-bold text-blue-900'>Empleados</h2>
 
-      {
-        employees.map((employee) => (
-          <article key={employee.id}>
-            <h3>{employee.name}</h3>
-            <p>Empleado nro {employee.id}</p>
-          </article>
-        ))
-      }
-
+      <table className='border border-separate'>
+        <thead>
+          <tr>
+            <th className='bg-blue-100 text-left p-2'>Empleado Id</th>
+            <th className='bg-blue-100 text-left p-2'>Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            employees.map((employee) => (
+              <tr key={employee.id}>
+                <td className='border p-2'>{employee.id}</td>
+                <td className='border p-2'>{employee.name}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </>
   )
 }

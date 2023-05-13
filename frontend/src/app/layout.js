@@ -1,15 +1,22 @@
-import '../styles/globals.css'
+import './globals.css'
+
+import { Head } from './components/Head'
+import { Navigation } from './components/Navigation'
 
 export default function RootLayout ({ children }) {
   return (
-    <html lang='en'>
+    <html>
       <head>
-        <title>La Aldeana App with Next 13</title>
+        <Head />
       </head>
-
-      <body className='bg-slate-600 font-bold m-4 pt-2'>
-        <h2>Layour -- Barra de navegacion</h2>
-        {children}
+      <body className='overscroll-none'>
+        <main className='block w-full max-w-6xl p-4 pb-32 m-auto'>
+          <Navigation />
+          {children}
+          {
+            /* Agregar Footer */
+          }
+        </main>
       </body>
     </html>
   )
