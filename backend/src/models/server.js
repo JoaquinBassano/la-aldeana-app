@@ -10,9 +10,6 @@ class Server {
     this.app = express()
     this.port = process.env.PORT
 
-    // TODO: generar importación automática de paths
-    this.employeesPath = '/api/employees'
-
     this.connectDB()
     this.middlewares()
     this.routes()
@@ -29,7 +26,7 @@ class Server {
   }
 
   routes () {
-    this.app.use(this.employeesPath, require('../routes/employees'))
+    this.app.use('/api', require('../routes'))
   }
 
   listen () {

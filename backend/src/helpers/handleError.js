@@ -4,7 +4,7 @@ const httpError = (res, err) => {
   console.log(err)
   return res
     .status(httpCodes.INTERNAL_SERVER_ERROR)
-    .json({ error: err.message || errorMessages.internalError })
+    .json({ error: err.message || errorMessages.INTERNAL_SERVER_ERROR })
 }
 
 const asyncWrapper =
