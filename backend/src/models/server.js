@@ -20,7 +20,7 @@ class Server {
   }
 
   routes () {
-    this.app.use(this.employeesPath, require('../routes/employees'))
+    this.app.use(this.employeesPath, require('../../routes/employees'))
   }
 
   listen () {
