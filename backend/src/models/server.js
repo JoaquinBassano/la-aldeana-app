@@ -1,16 +1,22 @@
 const express = require('express')
 const cors = require('cors')
 
+const logger = require('../logger')
+
+const { dbConnection } = require('../../config/mongo')
+
 class Server {
   constructor () {
     this.app = express()
     this.port = process.env.PORT
 
-    // TODO: generar importación automática de paths
-    this.employeesPath = '/api/employees'
-
+    this.connectDB()
     this.middlewares()
     this.routes()
+  }
+
+  async connectDB () {
+    await dbConnection()
   }
 
   middlewares () {
@@ -20,12 +26,12 @@ class Server {
   }
 
   routes () {
-    this.app.use(this.employeesPath, require('../routes/employees'))
+    this.app.use('/api', require('../routes'))
   }
 
   listen () {
     this.app.listen(this.port, () => {
-      console.log('Server is running on PORT', this.port)
+      logger.success('Server is running on PORT', this.port)
     })
   }
 }
