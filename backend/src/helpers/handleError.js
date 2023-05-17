@@ -12,4 +12,4 @@ const asyncWrapper =
     (req, res, next, ...args) =>
       fn(req, res, next, ...args).catch(error => httpError(res, error))
 
-module.exports = asyncWrapper
+module.exports = { asyncWrapper }
