@@ -22,4 +22,10 @@ const EmployeeSchema = new mongoose.Schema(
   }
 )
 
+EmployeeSchema.methods.toJSON = function () {
+  const { _id, ...employee } = this.toObject()
+  employee.id = _id
+  return employee
+}
+
 module.exports = { EmployeeModel: mongoose.model('employees', EmployeeSchema) }

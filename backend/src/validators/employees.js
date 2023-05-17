@@ -23,6 +23,7 @@ const validateCreate = [
     }),
 
   (req, res, next) => {
+    // TODO: Validar los campos no permitidos (idea --> strict: true)
     validateRequest(req, res, next)
   }
 ]
